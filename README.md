@@ -1,5 +1,23 @@
-# AnyEdit
-Official Repo for Paper "AnyEdit: Mastering Unified High-Quality Image Editing for Any Idea"
+<h1 align = "center">
+<img src='https://img.shields.io/badge/Paper-Arxiv-red'>AnyEdit: Mastering Unified High-Quality Image Editing for Any Idea
+</h1>
+
+<div align="center">
+Qifan Yu<sup>1</sup>*, Wei Chow<sup>1</sup>*, Zhongqi Yue<sup>2</sup>, Kaihang Pan<sup>1</sup>*, Yang Wu<sup>3</sup>, Xiaoyang Wan<sup>1</sup>, 
+ 
+ Juncheng Li<sup>1</sup>, Siliang Tang<sup>1</sup>, Hanwang Zhang<sup>2</sup>, Yueting Zhuang<sup>1</sup>
+
+
+<sup>1</sup>Zhejiang University, <sup>2</sup>Nanyang Technological University, <sup>3</sup>Alibaba Group
+
+\*Equal Contribution.
+
+[![arXiv](https://img.shields.io/badge/arXiv-2411.15738-b31b1b.svg)](https://arxiv.org/abs/2411.15738)
+[![Dataset](https://img.shields.io/badge/🤗%20Huggingface-Dataset-yellow)](https://huggingface.co/datasets/Bin1117/AnyEdit)
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?logo=github)](https://github.com/DCDmllm/AnyEdit)
+[![Page](https://img.shields.io/badge/Home-Page-b31b1b.svg)](https://dcd-anyedit.github.io/)
+</div>
+
 # 🌍 Introduction
 AnyEdit is a comprehensive multimodal instruction editing dataset, comprising 2.5 million high-quality editing pairs spanning over 20 editing types across five domains. We ensure the diversity and quality of the AnyEdit collection through three aspects: initial data diversity, adaptive editing process, and automated selection of editing results. Using the dataset, we further train a novel AnyEdit Stable Diffusion with task-aware routing and learnable task embedding for unified image editing. Comprehensive experiments on three benchmark datasets show that AnyEdit consistently boosts the performance of diffusion-based editing models. This presents prospects for developing instruction-driven image editing models that support human creativity.
 # 🔥 News
