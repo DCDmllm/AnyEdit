@@ -1,6 +1,8 @@
-<h1 align = "center">
-<img src='https://img.shields.io/badge/Paper-Arxiv-red'>AnyEdit: Mastering Unified High-Quality Image Editing for Any Idea
+<h1 align="center">
+  <img src='assert/main_figures/logo.svg' width="2%" height="auto" style="display: inline-block;">
+  AnyEdit: Mastering Unified High-Quality Image Editing for Any Idea
 </h1>
+
 
 <div align="center">
 Qifan Yu<sup>1</sup>*, Wei Chow<sup>1</sup>*, Zhongqi Yue<sup>2</sup>, Kaihang Pan<sup>1</sup>*, Yang Wu<sup>3</sup>, Xiaoyang Wan<sup>1</sup>, 
@@ -22,6 +24,11 @@ Qifan Yu<sup>1</sup>*, Wei Chow<sup>1</sup>*, Zhongqi Yue<sup>2</sup>, Kaihang P
 AnyEdit is a comprehensive multimodal instruction editing dataset, comprising 2.5 million high-quality editing pairs spanning over 20 editing types across five domains. We ensure the diversity and quality of the AnyEdit collection through three aspects: initial data diversity, adaptive editing process, and automated selection of editing results. Using the dataset, we further train a novel AnyEdit Stable Diffusion with task-aware routing and learnable task embedding for unified image editing. Comprehensive experiments on three benchmark datasets show that AnyEdit consistently boosts the performance of diffusion-based editing models. This presents prospects for developing instruction-driven image editing models that support human creativity.
 # 🔥 News
 Due to recent heavy workloads, we will upload the dataset and code as soon as possible. Specifically, the dataset has already been organized; however, due to its large size (~284GB even after compression) and slow internet speed (for Hugging Face), the upload process will take some time. Additionally, we plan to complete the organization and upload the AnyEdit collection pipeline code within the next 2 to 4 weeks.
+### TODO
+- [x] Release AnyEdit datasets.
+- [ ] Release data curation pipelines.
+- [ ] Release inference code.
+- [ ] Release training scripts.
 # 💡 Overview
 ![image](assert/main_figures/figure1_dataset_00.png)
 We comprehensively categorize image editing tasks into 5 groups based on different editing capabilities:
