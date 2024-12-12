@@ -7,7 +7,7 @@
 
 
 <div align="center">
-Qifan Yu<sup>1</sup>*, Wei Chow<sup>1</sup>*, Zhongqi Yue<sup>2</sup>, Kaihang Pan<sup>1</sup>*, Yang Wu<sup>3</sup>, Xiaoyang Wan<sup>1</sup>, 
+Qifan Yu<sup>1</sup>*, Wei Chow<sup>1</sup>*, Zhongqi Yue<sup>2</sup>, Kaihang Pan<sup>1</sup>, Yang Wu<sup>3</sup>, Xiaoyang Wan<sup>1</sup>, 
  
  Juncheng Li<sup>1</sup>, Siliang Tang<sup>1</sup>, Hanwang Zhang<sup>2</sup>, Yueting Zhuang<sup>1</sup>
 
