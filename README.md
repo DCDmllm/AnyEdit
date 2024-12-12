@@ -1,7 +1,9 @@
-<h1 align="center">
-  <img src='assert/main_figures/logo.svg' width="2%" height="auto" style="display: inline-block;">
+<h1 align="center" style="line-height: 50px;">
+  <img src='assert/main_figures/logo.svg' width="4%" height="auto" style="vertical-align: middle;">
   AnyEdit: Mastering Unified High-Quality Image Editing for Any Idea
 </h1>
+
+
 
 
 <div align="center">
