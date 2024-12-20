@@ -28,10 +28,12 @@ AnyEdit is a comprehensive multimodal instruction editing dataset, comprising 2.
 Due to recent heavy workloads, we will upload the dataset and code as soon as possible. Specifically, the dataset has already been organized; however, due to its large size (~284GB even after compression) and slow internet speed (for Hugging Face), the upload process will take some time. Additionally, we plan to complete the organization and upload the AnyEdit collection pipeline code within the next 2 to 4 weeks.
 ### TODO
 - [x] Release AnyEdit datasets.
+- [x] Release AnyEdit-Test Benchmark. 
 - [ ] Release data curation pipelines.
 - [ ] Release inference code.
 - [ ] Release training scripts.
 # 💡 Overview
+Full training set and dev set are publicly available on [Huggingface](https://huggingface.co/datasets/Bin1117/AnyEdit). We only provide a zip file for the test split to prevent potential data contamination from foundation models crawling the test set for training. Please download the test set [here](https://drive.google.com/file/d/1F9zduTZ7nD01EZMTjYnvcBS3aMvCby78/view?usp=sharing).
 ![image](assert/main_figures/figure1_dataset_00.png)
 We comprehensively categorize image editing tasks into 5 groups based on different editing capabilities:
 - (a) Local Editing which focuses on region-based editing (green area);
