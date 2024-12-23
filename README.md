@@ -142,5 +142,19 @@ CUDA_VISIBLE_DEVICES=2 python post_filter.py --instruction-type []
   | <img src="assert/example_figures/visual_segment_origin.jpg" width="250" height="250"> | <img src="assert/example_figures/visual_segment_visual_input.jpg" width="250" height="250"> |Visual Segment | Follow the given segment image [v*] to remove truck  | <img src="assert/example_figures/visual_segment_edit.jpg" width="250" height="250"> |
   | <img src="assert/example_figures/visual_sketch_origin.jpg" width="250" height="250"> | <img src="assert/example_figures/visual_sketch_visual_input.jpg" width="250" height="250"> |Visual Sketch | Watch the given sketch [v*] to replace the bananas to apples | <img src="assert/example_figures/visual_sketch_edit.jpg" width="250" height="250"> |
 
+# 📜 Citation
+If you find this work useful for your research, please cite our paper and star our git repo:
+```bibtex
+@misc{yu2024anyedit,
+      title={AnyEdit: Mastering Unified High-Quality Image Editing for Any Idea}, 
+      author={Qifan Yu and Wei Chow and Zhongqi Yue and Kaihang Pan and Yang Wu and Xiaoyang Wan and Juncheng Li and Siliang Tang and Hanwang Zhang and Yueting Zhuang},
+      year={2024},
+      eprint={2411.15738},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2411.15738}, 
+}
+```
+
 
   
