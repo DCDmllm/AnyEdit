@@ -1,0 +1,62 @@
+{
+    "sample0": {
+        "original_caption": "An egg is suspended in the air above a table.",
+        "instuction": "What will happen if the egg falls?",
+        "target_cation": "The egg breaks on the table.",
+        "key_words": "egg"
+    },
+    "sample1": {
+        "original_caption": "A glass half full of water on a table.",
+        "instuction": "What happens if someone accidentally knocks it over?",
+        "target_cation": "a spilled glass of water on a table.",
+        "key_words": "glass, water"
+    },
+    "sample2": {
+        "original_caption": "A man stands under a canopy.",
+        "instuction": "what would happen if the stick supporting the canopy fell?",
+        "target_cation": "the man is buried under the canopy.",
+        "key_words": "man, canopy"
+    },
+    "sample3": {
+        "original_caption": "A sailboat gliding gracefully on calm blue waters under a sunny sky.",
+        "instuction": "What would happen if a sailboat suddenly capsized?",
+        "target_cation": "a sailboat tossed around in rough waters during a sudden storm",
+        "key_words": "sailboat, storm"
+    },
+    "sample4": {
+        "original_caption": "A sparrow stands on a powerline.",
+        "instuction": "what would happen if a surge of high voltage pass through?",
+        "target_cation": "the sparrow is charred and falls to the ground",
+        "key_words": "sparrow, powerline"
+    },
+    "sample5": {
+        "original_caption": "A raw steak is placed on a plate.",
+        "instuction": "what would happen if the steak were grilled with flames?",
+        "target_cation": "a steak with char marks is placed on the plate.",
+        "key_words": "steak"
+    },
+    "sample6": {
+        "original_caption": "a man supporting a rock.",
+        "instuction": "What happens if the man can't support it anymore?",
+        "target_cation": "a man overwhelmed by the rock.",
+        "key_words": "man, rock"
+    },
+    "sample7": {
+        "original_caption": "A bullet is about to fly towards an apple.",
+        "instuction": "Let the bullet reaches the apple?",
+        "target_cation": "a bullet pierces through the apple.",
+        "key_words": "bullet, apple"
+    },
+    "sample8": {
+        "original_caption": "A bullet is about to fly towards an apple.",
+        "instuction": "Let the bullet reaches the apple?",
+        "target_cation": "a bullet pierces through the apple.",
+        "key_words": "bullet, apple"
+    },
+    "sample9": {
+        "original_caption": "A man is driving in a car.",
+        "instuction": "a car accident occurs.",
+        "target_cation": "the man's head is buried in the airbag, and he faints.",
+        "key_words": "man"
+    }
+}
