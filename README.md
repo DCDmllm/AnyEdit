@@ -145,14 +145,11 @@ CUDA_VISIBLE_DEVICES=2 python post_filter.py --instruction-type []
 # 📜 Citation
 If you find this work useful for your research, please cite our paper and star our git repo:
 ```bibtex
-@misc{yu2024anyedit,
-      title={AnyEdit: Mastering Unified High-Quality Image Editing for Any Idea}, 
-      author={Qifan Yu and Wei Chow and Zhongqi Yue and Kaihang Pan and Yang Wu and Xiaoyang Wan and Juncheng Li and Siliang Tang and Hanwang Zhang and Yueting Zhuang},
-      year={2024},
-      eprint={2411.15738},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2411.15738}, 
+@article{yu2024anyedit,
+  title={AnyEdit: Mastering Unified High-Quality Image Editing for Any Idea},
+  author={Yu, Qifan and Chow, Wei and Yue, Zhongqi and Pan, Kaihang and Wu, Yang and Wan, Xiaoyang and Li, Juncheng and Tang, Siliang and Zhang, Hanwang and Zhuang, Yueting},
+  journal={arXiv preprint arXiv:2411.15738},
+  year={2024}
 }
 ```
 
