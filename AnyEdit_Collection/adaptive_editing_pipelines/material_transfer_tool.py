@@ -113,6 +113,7 @@ if __name__ == "__main__":
     os.makedirs(f'{args.instruction_path}/{args.instruction_type}/mask', exist_ok=True)
     os.makedirs(f'{args.instruction_path}/{args.instruction_type}/depth', exist_ok=True)
     os.makedirs(f'{args.instruction_path}/{args.instruction_type}/edited_img', exist_ok=True)
+    os.makedirs(f'{args.instruction_path}/{args.instruction_type}/visual_input', exist_ok=True)
     
     valid_data = []
     iter = 0
@@ -124,7 +125,7 @@ if __name__ == "__main__":
         target_image_path = os.path.join(args.image_path, data['image_file'])
         
         # need to put all material image into the path 'xxxx/xxxx/materials'
-        material_exemplar_root = f"{args.instruction_path}/{args.instruction_type}/materials/"
+        material_exemplar_root = f"{args.instruction_path}/{args.instruction_type}/materials"
         material_name = random.choice(os.listdir(material_exemplar_root))
         
         material_exemplar_path = f"{material_exemplar_root}/{material_name}"
@@ -136,12 +137,14 @@ if __name__ == "__main__":
         if image_files:
             selected_image = random.choice(image_files)
             material_image_path = os.path.join(material_exemplar_path, selected_image)
-            data["visual_input"] = material_image_path
+            ip_image = Image.open(material_image_path).convert("RGB")
+            output_visual_path = f"{args.instruction_path}/{args.instruction_type}/visual_input/{material_name}_{image_path_pre}.jpg"
+            ip_image.save(output_visual_path)
+            data["visual_input"] = output_visual_path
             print(f"Selected material image path: {material_image_path}")
         else:
             print("No image files found in the selected folder.")
             continue
-        output_image_path = f"{args.instruction_path}/{args.instruction_type}/edited_img/{image_path_pre}.jpg"
         output_depth_image = f"{args.instruction_path}/{args.instruction_type}/depth/{image_path_pre}"
         output_mask_image = f"{args.instruction_path}/{args.instruction_type}/mask/{image_path_pre}.jpg"
         output_image_path = f"{args.instruction_path}/{args.instruction_type}/edited_img/{material_name}_{image_path_pre}.jpg"
@@ -181,8 +184,6 @@ if __name__ == "__main__":
         grayscale_init_img = ImageChops.lighter(img_black_mask, grayscale_img)
         init_img = grayscale_init_img
         
-        
-        ip_image = Image.open(material_image_path)
         run_depth(target_image_path, output_depth_image, dpt_model)  # save depth image for other visual reference
         np_image = np.array(Image.open(output_depth_image+".png"))
 

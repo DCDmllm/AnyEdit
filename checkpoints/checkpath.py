@@ -18,6 +18,6 @@ os.makedirs("./checkpoints/foundation_models/stable-diffusion-xl-base-1.0", exis
 os.makedirs("./checkpoints/visual_models/ip_adapter", exist_ok=True)
 os.makedirs("./checkpoints/visual_models/stable-diffusion-2-1", exist_ok=True)
 os.makedirs("./checkpoints/visual_models/depth_anything_v2", exist_ok=True)
-os.makedirs("./checkpoints/visual_models/anydoor", exist_ok=True)
+os.makedirs("./checkpoints/visual_models/anydoor/checkpoints", exist_ok=True)
 os.makedirs("./checkpoints/visual_models/controlnet-canny-sdxl-1.0", exist_ok=True)
 os.makedirs("./checkpoints/visual_models/controlnet-depth-sdxl-1.0", exist_ok=True)

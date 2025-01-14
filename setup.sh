@@ -71,7 +71,7 @@ cd ..
 wget https://github.com/intel-isl/DPT/releases/download/1_0/dpt_hybrid-midas-501f0c75.pt
 
 # 3. visual_image_reference
-cd anydoor
+cd anydoor/checkpoints
 wget https://huggingface.co/spaces/xichenhku/AnyDoor/resolve/main/epoch%3D1-step%3D8687.ckpt -O anydoor.ckpt
 wget https://dl.fbaipublicfiles.com/dinov2/dinov2_vitg14/dinov2_vitg14_pretrain.pth
 cd ..

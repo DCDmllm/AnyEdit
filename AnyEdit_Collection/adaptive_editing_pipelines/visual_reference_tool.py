@@ -279,7 +279,7 @@ def visual_inference(det_model, sam_model, model, ddim_sampler, input, instructi
             return None
         print('Target object is complete')
     
-    mask_path = edited_image_path_pre.replace("edited_img", "mask") + f'.png'
+    mask_path = edited_image_path_pre.replace("edited_img", "mask") + f'.jpg'
     tar_mask_pil.save(mask_path)
     cv2_mask_image = cv2.imread(mask_path)
     maskimage_dilate = cv2.dilate(cv2_mask_image, np.ones((10,10), np.uint8))
@@ -289,7 +289,7 @@ def visual_inference(det_model, sam_model, model, ddim_sampler, input, instructi
     if ref_mask_pil is None:
         print('Skip: Generation reference mask fails')
         return None
-    ref_mask_path = edited_image_path_pre.replace("edited_img", "mask") + f'_ref.png'
+    ref_mask_path = edited_image_path_pre.replace("edited_img", "mask") + f'_ref.jpg'
     ref_mask_pil.save(ref_mask_path)
 
     ref_cv2_mask_image = cv2.imread(ref_mask_path)
@@ -302,7 +302,7 @@ def visual_inference(det_model, sam_model, model, ddim_sampler, input, instructi
     ref_image = ref_image_pil.resize((512, 512), resample=Image.Resampling.LANCZOS)
     ref_mask = ref_maskimage_dilate.resize((512, 512), resample=Image.Resampling.LANCZOS)
 
-    # ref_image.save(edited_image_path_pre.replace("edited_img", "visual_img") + f'_ref.png')
+    # ref_image.save(edited_image_path_pre.replace("edited_img", "visual_img") + f'_ref.jpg')
     # ref_mask.save(ref_mask_path)
     ref_image = np.asarray(ref_image)
     ref_mask = np.asarray(ref_mask)
@@ -315,13 +315,13 @@ def visual_inference(det_model, sam_model, model, ddim_sampler, input, instructi
     if not test_without_model:
         gen_image = inference_single_image(model, ddim_sampler, ref_image, ref_mask, tar_image.copy(), tar_mask, args)
         gen_image = Image.fromarray(gen_image).resize(original_size, resample=Image.Resampling.LANCZOS)
-        save_edited_image_path = edited_image_path_pre + f'.png'
+        save_edited_image_path = edited_image_path_pre + f'.jpg'
         gen_image.save(save_edited_image_path)
     else:
-        save_edited_image_path = edited_image_path_pre + f'.png'
+        save_edited_image_path = edited_image_path_pre + f'.jpg'
     
-    cur_data ={"edit": instruction, "edit object": edited_object, "ref_object":ref_object, "output": output,
-                        "input": input, "edit_type": "visual_reference", "reference_image_file": visual_input_path, "image_file": init_image_path, "edited_file": save_edited_image_path}
+    cur_data ={"edit": instruction, "edit object": edited_object, "ref_object": ref_object, "output": output,
+                        "input": input, "edit_type": "visual_reference", "visual_input": visual_input_path, "image_file": init_image_path, "edited_file": save_edited_image_path}
     total_edited_images.append(cur_data)
     return total_edited_images 
 
@@ -345,7 +345,8 @@ def parse_args():
     parser.add_argument("--instruction-type", required=True, help="specify the instruction type.")
     parser.add_argument("--json-path", default=None)
     parser.add_argument("--image-path", default=None)
-    parser.add_argument("--idx", type=int, default=-1, help="specify the experiment id.")
+    parser.add_argument("--start-idx", type=str, default='-1', help="specify the experiment id.")
+    parser.add_argument("--end-idx", type=str, default='-1', help="specify the experiment id.")
     parser.add_argument(
         "--options",
         nargs="+",
@@ -359,7 +360,6 @@ def load_tool_model(args):
     config_file = args.groundingdino_config_file #'GroundingDINO/groundingdino/config/GroundingDINO_SwinB_cfg.py' 
     grounded_checkpoint = args.groundingdino_ckpt #'checkpoints/groundingdino_swinb_cogcoor.pth'  
     sam_checkpoint = args.sam_ckpt #'checkpoints/sam_vit_h_4b8939.pth'
-    sd_ckpt = args.sd_ckpt # "/huggingface/stable-diffusion-v1-5"
     device = 'cuda'
     
     get_gpu_memory_info(0)
@@ -367,10 +367,6 @@ def load_tool_model(args):
     
     det_model = load_model(config_file, grounded_checkpoint, device=device)
     sam_model = SamPredictor(build_sam(checkpoint=sam_checkpoint).to(device))
-
-    sd_pipe = StableDiffusionPipeline.from_pretrained(sd_ckpt, torch_dtype=torch.float16,local_files_only=True)
-    
-    sd_pipe = sd_pipe.to(device)
 
     # load model for visual reference
     model_ckpt =  args.pretrained_model
@@ -380,7 +376,7 @@ def load_tool_model(args):
     model = model.cuda()
     ddim_sampler = DDIMSampler(model)
 
-    return sd_pipe, model, ddim_sampler, det_model, sam_model
+    return model, ddim_sampler, det_model, sam_model
 
 if __name__ == '__main__': 
     test_without_model = False
@@ -414,33 +410,22 @@ if __name__ == '__main__':
     success_data = []
     failure_data = []
     final_edited_results = []
-    with open(f'{args.instruction_path}/{args.instruction_type}/final_edit_results_{args.idx}.json', 'r') as results_file:
-       final_edited_results = json.load(results_file)
-    with open(f'{args.instruction_path}/{args.instruction_type}/edit_success_{args.idx}.json', 'r') as success_file:
-        success_data = json.load(success_file)
-    with open(f'{args.instruction_path}/{args.instruction_type}/edit_failure_{args.idx}.json', 'r') as failure_file:
-        failure_data = json.load(failure_file)
-    
-    processed_data = len(final_edited_results) + len(failure_data)
-    print('f{processed_data} has been processed')
-
 
     if not test_without_model:
-        sd_model, anydoor_model, ddim_sampler, det_model, sam_model = load_tool_model(args)
+        anydoor_model, ddim_sampler, det_model, sam_model = load_tool_model(args)
     else:
-        sd_model, anydoor_model, ddim_sampler, det_model, sam_model = None, None, None, None, None
+        anydoor_model, ddim_sampler, det_model, sam_model = None, None, None, None, None
 
-    iter = 0
+    if args.start_idx != '-1' and args.end_idx != '-1':
+        print(args.start_idx, args.end_idx)
+        st_idx = int(args.start_idx)
+        ed_idx = int(args.end_idx)
+        edit_instruction_data = edit_instruction_data[st_idx:ed_idx]
+    print(len(edit_instruction_data))
     for data in tqdm(edit_instruction_data):
-        if iter < processed_data:
-            iter = iter + 1
-            print('f{iter} has been processed')
-            continue
-        data["edit_type"] = "visual_reference"
         input, edited_object, ref_object, visual_image_path, output, init_image_path, instruction, \
             edited_image_path_pre = return_parameters(data, args, init_image_root=args.image_path)
             # input, edited_object, ref_object, visual_image_path, output, init_image_path, instruction, edited_image_path
-        ref_image_path = visual_image_path
         tar_image_path = init_image_path # come from coco image or other generated images
         
         instruction_data = None
@@ -450,32 +435,18 @@ if __name__ == '__main__':
 
         if instruction_data is not None and len(instruction_data) > 0:
             valid_number += 1
-            # final_edited_results.extend(instruction_data)
-            data["edit"] = data["edit"].replace(data["ref_object"], '[V*]')
-            data["output"] = data["output"].replace(data["ref_object"], '[V*]')
             success_data.append(data)
-            final_edited_results.append(data)
+            final_edited_results.extend(instruction_data)
         else:
             failure_data.append(data)
-        iter = iter + 1
-        print(iter) 
-        if iter % 20 == 0:
-            print(f"Another 20 generations done, valid editing insturction data: {valid_number}")
-            with open(f'{args.instruction_path}/{args.instruction_type}/final_edit_results_{args.idx}.json', 'w') as results_file:
-                json.dump(final_edited_results, results_file, indent=4)
-            with open(f'{args.instruction_path}/{args.instruction_type}/edit_success_{args.idx}.json', 'w') as success_file:
-                json.dump(success_data, success_file, indent=4)
-            with open(f'{args.instruction_path}/{args.instruction_type}/edit_failure_{args.idx}.json', 'w') as failure_file:
-                json.dump(failure_data, failure_file, indent=4)  
-            # break  
     
     
                 
     print(f"valid editing insturction data: {valid_number}")
-    with open(f'{args.instruction_path}/{args.instruction_type}/final_edit_results_{args.idx}.json', 'w') as results_file:
+    with open(f'{args.instruction_path}/{args.instruction_type}/final_edit_results_{args.start_idx}_{args.end_idx}.json', 'w') as results_file:
         json.dump(final_edited_results, results_file, indent=4)
-    with open(f'{args.instruction_path}/{args.instruction_type}/edit_success_{args.idx}.json', 'w') as success_file:
+    with open(f'{args.instruction_path}/{args.instruction_type}/edit_success_{args.start_idx}_{args.end_idx}.json', 'w') as success_file:
         json.dump(success_data, success_file, indent=4)
-    with open(f'{args.instruction_path}/{args.instruction_type}/edit_failure_{args.idx}.json', 'w') as failure_file:
-        json.dump(failure_data, failure_file, indent=4)    
+    with open(f'{args.instruction_path}/{args.instruction_type}/edit_failure_{args.start_idx}_{args.end_idx}.json', 'w') as failure_file:
+        json.dump(failure_data, failure_file, indent=4)  
 

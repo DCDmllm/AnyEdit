@@ -17,7 +17,7 @@ from tqdm import tqdm
 import argparse
 from omegaconf import OmegaConf
 from pathlib import Path
-lama_path = Path(__file__).resolve().parent.parent.parent / "lama"
+lama_path = Path(__file__).resolve().parent.parent.parent / "AnyEdit_Collection/other_modules/lama"
 sys.path.insert(0, str(lama_path))
 from saicinpainting.training.trainers import load_checkpoint
 from saicinpainting.evaluation.data import pad_tensor_to_modulo
@@ -84,7 +84,6 @@ def check_occlusion_by_segmentation(mask, threshold=0.15, min_area=50):
         print(f"Object is occluded: largest component area is {largest_component_area}, total area is {total_area}.")
         return True
     else:
-        print("Object is not occluded.")
         return False
 
 def masks_overlap(mask1, mask2):

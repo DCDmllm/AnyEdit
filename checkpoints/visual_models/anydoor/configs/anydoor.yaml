@@ -1,5 +1,5 @@
 model:
-  target: cldm.cldm.ControlLDM
+  target: AnyEdit_Collection.other_modules.cldm.cldm.ControlLDM
   params:
     linear_start: 0.00085
     linear_end: 0.0120
@@ -19,7 +19,7 @@ model:
     only_mid_control: False
 
     control_stage_config:
-      target: cldm.cldm.ControlNet
+      target: AnyEdit_Collection.other_modules.cldm.cldm.ControlNet
       params:
         use_checkpoint: True
         image_size: 32 # unused
@@ -37,7 +37,7 @@ model:
         legacy: False
 
     unet_config:
-      target: cldm.cldm.ControlledUnetModel
+      target: AnyEdit_Collection.other_modules.cldm.cldm.ControlledUnetModel
       params:
         use_checkpoint: True
         image_size: 32 # unused
@@ -80,6 +80,6 @@ model:
 
     cond_stage_config:
       target: ldm.modules.encoders.modules.FrozenDinoV2Encoder
-      weight: ./checkpoints/visual_reference/anydoor/checkpoints/dinov2_vitg14_pretrain.pth
+      weight: ./checkpoints/visual_models/anydoor/checkpoints/dinov2_vitg14_pretrain.pth
     
 
