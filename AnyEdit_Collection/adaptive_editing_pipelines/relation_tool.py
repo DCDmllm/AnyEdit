@@ -18,7 +18,8 @@ import argparse
 import spacy
 from omegaconf import OmegaConf
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent / "lama"))
+lama_path = Path(__file__).resolve().parent.parent.parent / "AnyEdit_Collection/other_modules/lama"
+sys.path.insert(0, str(lama_path))
 from saicinpainting.training.trainers import load_checkpoint
 from saicinpainting.evaluation.data import pad_tensor_to_modulo
 from saicinpainting.evaluation.utils import move_to_device
@@ -355,24 +356,10 @@ def relation_change(det_model, sam_model, inpaint_pipe, output, edited_object, d
     if mask_pil is None:
         print(f'Skip: mask for {edited_object} is none, image refers to {init_image_path}')
         return None
-    # check if the edited object intersects with the foreground object
-    # if foreground is not None:
-    #     for obj in foreground:
-    #         if obj == edited_object:
-    #             print(f'Skip: foreground object is the same as the edited object')
-    #             continue
-    #         mask_pil_fore, _, _, _ = maskgeneration(det_model, sam_model, init_image_path, obj)
-    #         if mask_pil_fore is not None:
-    #             if masks_overlap(np.array(mask_pil, dtype='int'), np.array(mask_pil_fore,dtype='int')):
-    #                 print(f'Skip: foreground object({obj}) intersects with edited object({edited_object})')
-    #                 return None
                 
     mask_array = np.array(mask_pil)
     mask_array = remove_noise(mask_array)
-    #check if the edited object is occluded
-    # if check_occlusion_by_segmentation(mask_array, threshold = 0.1):
-    #     print('Skip: occlusion')
-    #     return
+
     
     coords = np.argwhere(mask_array > 0)
     min_y, min_x = np.min(coords, axis=0)
