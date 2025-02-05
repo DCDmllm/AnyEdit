@@ -34,7 +34,7 @@ AnyEdit is a comprehensive multimodal instruction editing dataset, comprising 2.
 - [ ] Release inference code.
 - [ ] Release training scripts.
 # 💡 Overview
-Full training set and dev set are publicly available on [Huggingface](https://huggingface.co/datasets/Bin1117/AnyEdit). We only provide a zip file for the test split to prevent potential data contamination from foundation models crawling the test set for training. Please download the test set [here](https://drive.google.com/file/d/1w_QsjDvNp-c9R1gaT5lex0esQAPRE1AQ/view?usp=sharing).
+Full training set and dev set are publicly available on [Huggingface](https://huggingface.co/datasets/Bin1117/AnyEdit). We only provide a zip file for the test split to prevent potential data contamination from foundation models crawling the test set for training. Please download the test set [here](https://drive.google.com/file/d/1V-Z4agWoTMzAYkRJQ1BNz0-i79eAVWt4/view?usp=sharing).
 ![image](assert/main_figures/figure1_dataset_00.png)
 We comprehensively categorize image editing tasks into 5 groups based on different editing capabilities:
 - (a) Local Editing which focuses on region-based editing (green area);
