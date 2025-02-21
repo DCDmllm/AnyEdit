@@ -27,8 +27,7 @@ Qifan Yu<sup>1</sup>*, Wei Chow<sup>1</sup>*, Zhongqi Yue<sup>2</sup>, Kaihang P
 # 🌍 Introduction
 AnyEdit is a comprehensive multimodal instruction editing dataset, comprising 2.5 million high-quality editing pairs spanning over 20 editing types across five domains. We ensure the diversity and quality of the AnyEdit collection through three aspects: initial data diversity, adaptive editing process, and automated selection of editing results. Using the dataset, we further train a novel AnyEdit Stable Diffusion with task-aware routing and learnable task embedding for unified image editing. Comprehensive experiments on three benchmark datasets show that AnyEdit consistently boosts the performance of diffusion-based editing models. This presents prospects for developing instruction-driven image editing models that support human creativity.
 # 🔥 News
-- We have released the training & inference scripts and model weight of AnySD.
-- Due to recent heavy workloads, we will upload the dataset and code as soon as possible. Specifically, the dataset has already been organized; however, due to its large size (~284GB even after compression) and slow internet speed (for Hugging Face), the upload process will take some time. Additionally, we plan to complete the organization and upload the AnyEdit collection pipeline code within the next 2 to 4 weeks.
+- We have released the training & inference scripts and model weight of AnySD. If you want more details on training or using AnySD to complete your desired image editing, please refer to our [model repo](https://github.com/weichow23/AnySD) for more details.
 - [2024.12.23] We have finished uploading the AnyEdit datasets with AnyEdit-Test benchmark and the AnyEdit data curation pipelines.
 ### TODO
 - [x] Release AnyEdit datasets.
