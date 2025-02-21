@@ -18,21 +18,24 @@ Qifan Yu<sup>1</sup>*, Wei Chow<sup>1</sup>*, Zhongqi Yue<sup>2</sup>, Kaihang P
 
 [![arXiv](https://img.shields.io/badge/arXiv-2411.15738-b31b1b.svg)](https://arxiv.org/abs/2411.15738)
 [![Dataset](https://img.shields.io/badge/🤗%20Huggingface-Dataset-yellow)](https://huggingface.co/datasets/Bin1117/AnyEdit)
+[![Checkpoint](https://img.shields.io/badge/🤗%20Huggingface-CKPT-blue)](https://huggingface.co/WeiChow/AnySD)
 [![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?logo=github)](https://github.com/DCDmllm/AnyEdit)
-[![Page](https://img.shields.io/badge/Home-Page-b31b1b.svg)](https://dcd-anyedit.github.io/)
+[![GitHub](https://img.shields.io/badge/GitHub-ModelRepo-181717?logo=github)](https://github.com/weichow23/AnySD)
+[![Page](https://img.shields.io/badge/Home-Page-b3.svg)](https://dcd-anyedit.github.io/)
 </div>
 
 # 🌍 Introduction
 AnyEdit is a comprehensive multimodal instruction editing dataset, comprising 2.5 million high-quality editing pairs spanning over 20 editing types across five domains. We ensure the diversity and quality of the AnyEdit collection through three aspects: initial data diversity, adaptive editing process, and automated selection of editing results. Using the dataset, we further train a novel AnyEdit Stable Diffusion with task-aware routing and learnable task embedding for unified image editing. Comprehensive experiments on three benchmark datasets show that AnyEdit consistently boosts the performance of diffusion-based editing models. This presents prospects for developing instruction-driven image editing models that support human creativity.
 # 🔥 News
+- We have released the training & inference scripts and model weight of AnySD.
 - Due to recent heavy workloads, we will upload the dataset and code as soon as possible. Specifically, the dataset has already been organized; however, due to its large size (~284GB even after compression) and slow internet speed (for Hugging Face), the upload process will take some time. Additionally, we plan to complete the organization and upload the AnyEdit collection pipeline code within the next 2 to 4 weeks.
 - [2024.12.23] We have finished uploading the AnyEdit datasets with AnyEdit-Test benchmark and the AnyEdit data curation pipelines.
 ### TODO
 - [x] Release AnyEdit datasets.
 - [x] Release AnyEdit-Test Benchmark. 
 - [x] Release data curation pipelines.
-- [ ] Release inference code.
-- [ ] Release training scripts.
+- [x] Release inference code.
+- [x] Release training scripts.
 # 💡 Overview
 Full training set and dev set are publicly available on [Huggingface](https://huggingface.co/datasets/Bin1117/AnyEdit). We only provide a zip file for the test split to prevent potential data contamination from foundation models crawling the test set for training. Please download the test set [here](https://drive.google.com/file/d/1V-Z4agWoTMzAYkRJQ1BNz0-i79eAVWt4/view?usp=sharing).
 ![image](assert/main_figures/figure1_dataset_00.png)
