@@ -2,3 +2,4 @@
 [submodule "AnySD"]
 	path = AnySD
 	url = https://github.com/weichow23/AnySD
+	branch = main
